@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "V4f030xnNgiI92bALhcVQ3mVz/6Y0wsR+EmBc3SLRjo=",
+  "Source": "BussinessAPI",
+  "BasePath": "_content/BussinessAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
+      "Version": 2,
+      "Source": "DataAPI",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

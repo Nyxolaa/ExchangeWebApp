@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "";
+}
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <h1>Currency Search</h1>
+    <select></select>
+    <button> Search </button>
+    
+</div>
+
+<script>
+    function getData (){
+        $.ajax({
+          url: "ajax.aspx",
+          type: "get", //send it through get method
+          data: { 
+            ajaxid: 4, 
+            UserID: UserID, 
+            EmailAddress: EmailAddress
+          },
+          success: function(response) {
+            //Do Something
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+          }
+        });
+    }
+</script>
