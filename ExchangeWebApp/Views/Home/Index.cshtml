@@ -1,37 +1,143 @@
-﻿@{
+﻿@model DataAPI.Models.CurrencyRecord
+
+@{
     ViewData["Title"] = "";
 }
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-<script src="https://d3js.org/d3.v7.min.js"></script>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-<div>
-    <h1>Currency Search</h1>
-    <select></select>
-    <button> Search </button>
-    
-</div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 <script>
-    function getData (){
+
+    function getAllCurrencyCodes(){
         $.ajax({
-          url: "ajax.aspx",
-          type: "get", //send it through get method
-          data: { 
-            ajaxid: 4, 
-            UserID: UserID, 
-            EmailAddress: EmailAddress
-          },
-          success: function(response) {
-            //Do Something
-          },
-          error: function(xhr) {
-            //Do Something to handle error
-          }
+            type: 'GET',
+            url: "http://localhost:5035/api/Cache/currencyCodes",
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (response) {
+
+                console.log(response)
+
+            let codeSelectId = document.getElementById("currCodeSelect")
+
+                response.forEach((currencyCode)=>{
+                    let codeOpt = document.createElement("option")
+                    codeOpt.setAttribute("value", currencyCode)
+                    codeOpt.innerHTML=currencyCode
+                    codeSelectId.append(codeOpt)
+                })
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+
         });
     }
-</script>
+
+    function getData (){
+        let currCode = document.getElementById("currCodeSelect").value
+
+        const elements = document.getElementsByClassName('chart');
+        while(elements.length > 0){
+             elements[0].parentNode.removeChild(elements[0]);
+        }
+     
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:5035/api/Cache?currCode="+currCode,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+
+                var margin = { top: 40, right: 40, bottom: 40, left: 40 },
+                    width = 1000 - margin.left - margin.right,
+                    height = 700 - margin.top - margin.bottom;
+
+                var x = d3.time.scale()
+                    .domain([new Date(data[0].announcedDate), d3.time.day.offset(new Date(data[data.length - 1].announcedDate), 1)])
+                    .rangeRound([0, width - margin.left - margin.right]);
+
+                var y = d3.scale.linear()
+                    .domain([0, d3.max(data, function (d) { return d.forexBuying; })*2])
+                    .range([height - margin.top - margin.bottom, 0]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient('bottom')
+                    .ticks(d3.time.weeks, 1)
+                    .tickFormat(d3.time.format('%b %d'))
+                    .tickSize(0)
+                    .tickPadding(8);
+
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient('left')
+                    .tickPadding(8);
+
+                 //append the svg object to the body of the page
+                var svg = d3.select('#chartDiv').append('svg')
+                    .attr('class', 'chart')
+                    .attr('width', "100%")
+                    .attr('height', height)
+                    .append('g')
+                    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+                svg.selectAll('.chart')
+                    .data(data)
+                    .enter().append('rect')
+                    .attr('class', 'bar')
+                    .attr('x', function (d) { return x(new Date(d.announcedDate)); })
+                    .attr('y', function (d) { return height - margin.top - margin.bottom - (height - margin.top - margin.bottom - y(d.forexBuying)) })
+                    .attr('width', 10)
+                    .attr('height', function (d) { return height - margin.top - margin.bottom - y(d.forexBuying) });
+
+                svg.append('g')
+                    .attr('class', 'x axis')
+                    .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+                    .call(xAxis);
+
+                svg.append('g')
+                    .attr('class', 'y axis')
+                    .call(yAxis);
+
+            },
+            error: function (xhr) {
+                   console.log(xhr)}
+        });
+    }
+    
+    $(document).ready(function () {
+       
+        getAllCurrencyCodes()
+    });
+
+</script>   
+
+<div class="row">
+    <h1>Currency Search</h1>
+    <div class="col-4">
+        <select id="currCodeSelect" class="form-control" data-val-required="must choose...">
+            
+        </select>
+    </div>
+    <div class="col-4">
+        <button onclick="getData()" class="btn btn-primary" id="searchBtn"> Search 
+            <div class="astronaut"><div>Save me!</div>
+                    <img src="/images/tMan.png" alt="">
+            </div>
+        </button>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-12" id="chartDiv">
+
+    </div>
+</div>

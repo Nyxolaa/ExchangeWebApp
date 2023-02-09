@@ -4,12 +4,13 @@ using DataAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 
 namespace BussinessAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CacheController : ControllerBase
+    public class CacheController : Controller
     {
         private readonly ICacheService _cacheService;
         private readonly CurrencyDB _context;
@@ -24,6 +25,7 @@ namespace BussinessAPI.Controllers
         {
             var records = _cacheService.GetData<ICollection<CurrencyRecord>>(currCode);
 
+
             if (records==null)
             {
                 records = _context.currencyRecords.Where(x=>x.CurrencyCode==currCode).ToList();
@@ -32,6 +34,22 @@ namespace BussinessAPI.Controllers
             }
 
             return Ok(records);
+        }
+
+        [HttpGet("currencyCodes")]
+        public IActionResult GetCurrenyCode()
+        {
+
+            var codes = _cacheService.GetData<ICollection<string>>("currencyCodes");
+
+            if (codes == null)
+            {
+                codes =  _context.currencyRecords.Select(m => m.CurrencyCode).Distinct().ToList();
+
+                _cacheService.SetData<ICollection<string>>("currencyCodes", codes, DateTimeOffset.Now.AddYears(1));
+            }
+            
+            return Ok(codes);
         }
 
     }

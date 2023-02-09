@@ -1,5 +1,9 @@
-﻿using ExchangeWebApp.Models;
+﻿using DataAPI.DataAccess;
+using DataAPI.Models;
+using ExchangeWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace ExchangeWebApp.Controllers
@@ -7,6 +11,7 @@ namespace ExchangeWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CurrencyDB _context;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -29,9 +34,11 @@ namespace ExchangeWebApp.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public void currCodeList()
+        [HttpGet("DataAPI/Models/CurrencyRecord")]
+        public IEnumerable<CurrencyRecord> currCodeList(string currCode)
         {
-            
+            return (_context.currencyRecords.ToList().Where(x => x.CurrencyCode == currCode));
         }
+
     }
 }

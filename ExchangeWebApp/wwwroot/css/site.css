@@ -16,3 +16,42 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.astronaut {
+    font-size: 0px;
+    color: aliceblue;
+    top: 0;
+    left: 99px;
+    width: 50px;
+    height: auto;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    animation: rotation 20s infinite linear;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.astronaut:hover {
+    font-size: 36px;
+    filter: drop-shadow(0 0 6px whitesmoke) drop-shadow(-1px 0 6px darkgray) drop-shadow(0 -1px 8px gray) drop-shadow(0 0 15px transparent);
+    transform: translateY(-50%);
+}
+#searchBtn{
+    position: relative;
+}
+#searchBtn:hover .astronaut{
+opacity:1;
+
+}

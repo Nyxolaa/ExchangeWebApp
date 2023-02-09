@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\ExchangeWebApp\\wwwroot\\images\\tMan.png",
+      "PackagePath": "staticwebassets\\images\\tMan.png"
+    },
+    {
       "Id": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\ExchangeWebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
