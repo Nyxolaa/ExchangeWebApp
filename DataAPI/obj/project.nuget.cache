@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r4p/31Bv5As/FhI7vnUCez9Ptv8hbzNiORcPEWIQV4iJpszV/EIdqu2yTAEkLYAf/qtQ1uz1WITtrBRlZ7AMIQ==",
+  "dgSpecHash": "k3KHIJn/bAPQwwr8CZnxzfXrdUuKGVoB3Z9NaiKwjV0OHcSGmNQsNKgc1/sKkObuvWPUt7RSi8KEQsKPrl5Mcw==",
   "success": true,
-  "projectFilePath": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
+  "projectFilePath": "D:\\YEDEK DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bilg\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\Bilg\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

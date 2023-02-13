@@ -23,10 +23,10 @@ namespace BussinessAPI.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]string currCode)
         {
-            var records = _cacheService.GetData<ICollection<CurrencyRecord>>(currCode);
+            ICollection<CurrencyRecord> records = _cacheService.GetData<ICollection<CurrencyRecord>>(currCode);
 
 
-            if (records==null)
+            if (records == null || records.Count == 0)
             {
                 records = _context.currencyRecords.Where(x=>x.CurrencyCode==currCode).ToList();
 
@@ -51,6 +51,5 @@ namespace BussinessAPI.Controllers
             
             return Ok(codes);
         }
-
     }
 }

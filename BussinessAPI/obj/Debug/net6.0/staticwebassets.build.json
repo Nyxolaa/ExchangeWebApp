@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "V4f030xnNgiI92bALhcVQ3mVz/6Y0wsR+EmBc3SLRjo=",
+  "Hash": "bOwIg08qKLjP3vVvkigxvQy2v6HAe75nDAjS1jnF+1w=",
   "Source": "BussinessAPI",
   "BasePath": "_content/BussinessAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
+      "Identity": "D:\\YEDEK DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
       "Version": 2,
       "Source": "DataAPI",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

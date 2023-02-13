@@ -10593,11 +10593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
+      "projectUniqueName": "D:\\YEDEK DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
       "projectName": "DataAPI",
-      "projectPath": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
+      "projectPath": "D:\\YEDEK DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\DataAPI.csproj",
       "packagesPath": "C:\\Users\\Bilg\\.nuget\\packages\\",
-      "outputPath": "X:\\Fairu\\DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\obj\\",
+      "outputPath": "D:\\YEDEK DOTNET PROJECT PROVISION\\ExchangeWebApp\\DataAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
